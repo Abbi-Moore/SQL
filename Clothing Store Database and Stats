@@ -1,0 +1,28 @@
+--Create a clothing store database
+
+CREATE TABLE clothes (id INTEGER PRIMARY KEY, name TEXT, quantity INTEGER, aisle INTEGER, price INTEGER);
+
+INSERT INTO clothes VALUES (1, "T_Shirts", 10, 4, 12);
+INSERT INTO clothes VALUES (2, "Shorts", 8, 7, 10);
+INSERT INTO clothes VALUES (3, "Pants", 11, 9, 13);
+INSERT INTO clothes VALUES (4, "Shoes", 6, 5, 10);
+INSERT INTO clothes VALUES (5, "Jackets", 9, 8, 15);
+INSERT INTO clothes VALUES (6, "Bras", 7, 10, 13);
+INSERT INTO clothes VALUES (7, "Underwear", 10, 6, 6);
+INSERT INTO clothes VALUES (8, "Tank Tops", 9, 4, 7);
+INSERT INTO clothes VALUES (9, "Blouses", 10, 8, 15); 
+INSERT INTO clothes VALUES (10, "Necklaces", 15, 13, 13);
+INSERT INTO clothes VALUES (11, "Bracelets", 13, 5, 11);
+INSERT INTO clothes VALUES (12, "Rings", 14, 6, 13);
+INSERT INTO clothes VALUES (13, "Earrings", 17, 7, 11);
+INSERT INTO clothes VALUES (14, "Sandals", 3, 14, 14);
+INSERT INTO clothes VALUES (15, "Sneakers", 5, 8, 15);
+
+--display the database ordered by price
+SELECT * FROM clothes ORDER BY price;
+
+--what is the sum of items in clothes?
+SELECT SUM(quantity) FROM clothes;
+
+--what is the average price from items in clothes?
+SELECT AVG(price) FROM clothes;
