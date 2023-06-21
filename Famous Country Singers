@@ -1,0 +1,73 @@
+/* Create table about the people and what they do here */
+
+CREATE TABLE famous_people (ID INTEGER PRIMARY KEY,
+    first_name TEXT,
+    last_name TEXT,
+    gender TEXT,
+    age INTEGER,
+    home_state TEXT);
+    
+INSERT INTO famous_people VALUES (1, "Morgan", "Wallen", "M", 30, "Tennessee");
+INSERT INTO famous_people VALUES (2, "Kelsea", "Ballerini", "F", 29, "Tennessee");
+INSERT INTO famous_people VALUES (3, "Lauren", "Alaina", "F", 28, "Georgia");
+INSERT INTO famous_people VALUES (4, "Kane", "Brown", "M", 29, "Georgia");
+INSERT INTO famous_people VALUES (5, "Jordan", "Davis", "M", 35, "North_Carolina");
+INSERT INTO famous_people VALUES (6, "Zach", "Bryan", "M", 27, "Oklahoma");
+INSERT INTO famous_people VALUES (7, "Noah", "Thompson", "M", 21, "Kentucky");
+INSERT INTO famous_people VALUES (8, "Gabby", "Barrett", "F", 23, "Pennsylvania");
+INSERT INTO famous_people VALUES (9, "Megan", "Maroney", "F", 25, "Georgia");
+INSERT INTO famous_people VALUES (10, "Bailey", "Zimmerman", "M", 23, "Illinois");
+
+CREATE TABLE songs (ID INTEGER PRIMARY KEY,
+    title TEXT,
+    famous_people_id INTEGER,
+    released INTEGER);
+    
+INSERT INTO songs VALUES (1, "Me to Me", 1, 2023);
+INSERT INTO songs VALUES (2, "Blindsided", 2, 2023);
+INSERT INTO songs VALUES (3, "Road Less Traveled", 3, 2017);
+INSERT INTO songs VALUES (4, "Thank God", 4, 2022);
+INSERT INTO songs VALUES (5, "Next Thing You Know", 5, 2023);
+INSERT INTO songs VALUES (6, "Something In The Orange", 6, 2022);
+INSERT INTO songs VALUES (7, "Stay", 7, 2022);
+INSERT INTO songs VALUES (8, "Glory Days", 8, 2023);
+INSERT INTO songs VALUES (9, "Tennessee Orange", 9, 2023);
+INSERT INTO songs VALUES (10, "Religiously", 10, 2023);
+
+
+CREATE TABLE hobbies (ID INTEGER PRIMARY KEY, 
+    name TEXT,
+    famous_people_id INTEGER);
+    
+INSERT INTO hobbies VALUES (1, "golfing", 5);
+INSERT INTO hobbies VALUES (2, "dancing", 2);
+INSERT INTO hobbies VALUES (3, "singing", 4);
+INSERT INTO hobbies VALUES (4, "fishing", 3);
+INSERT INTO hobbies VALUES (5, "reading", 6);
+INSERT INTO hobbies VALUES (6, "traveling", 1);
+INSERT INTO hobbies VALUES (7, "sleeping", 10);
+INSERT INTO hobbies VALUES (8, "exercising", 8);
+INSERT INTO hobbies VALUES (9, "painting", 7);
+INSERT INTO hobbies VALUES (10, "shopping", 9);
+
+--Display first name, last name, and song title.
+SELECT famous_people.first_name, famous_people.last_name, songs.title
+    FROM famous_people
+    JOIN songs
+    ON famous_people.id = songs.famous_people_id;
+    
+--Display first name, last name, and home state.    
+SELECT first_name, last_name, home_state
+    FROM famous_people;
+
+--Display first name, last name, age, and hobbies.
+SELECT famous_people.first_name, famous_people.last_name, famous_people.age, hobbies.name, hobbies.famous_people_id
+    FROM famous_people
+    JOIN hobbies
+    ON famous_people.id = hobbies.famous_people_id;
+    
+ --Display first name, last name, song title, and release date.
+ SELECT famous_people.first_name, famous_people.last_name, songs.title, songs.famous_people_id, songs.released
+    FROM famous_people
+    JOIN songs
+    ON famous_people.id = songs.famous_people_id;
